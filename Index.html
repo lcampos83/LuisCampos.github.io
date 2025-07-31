@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Desarrollador de Software</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #2563eb;
+            --secondary: #1e40af;
+            --accent: #f97316;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            color: var(--dark);
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .cv-container {
+            max-width: 1000px;
+            margin: 30px auto;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        
+        /* Header Styles */
+        .header {
+            background: linear-gradient(120deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 50px 40px 40px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--accent);
+        }
+        
+        .name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+        
+        .title {
+            font-size: 1.5rem;
+            font-weight: 400;
+            opacity: 0.9;
+            margin-bottom: 25px;
+        }
+        
+        .profile-summary {
+            max-width: 900px;
+            margin: 0 auto 20px;
+            font-size: 1rem;
+            line-height: 1.7;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px 25px;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+            transition: transform 0.3s;
+        }
+        
+        .contact-item:hover {
+            transform: translateY(-3px);
+        }
+        
+        .contact-item i {
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+        
+        /* Main Content Styles */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            padding: 40px;
+        }
+        
+        .column {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border-top: 3px solid var(--primary);
+        }
+        
+        .section-title {
+            color: var(--primary);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--light-gray);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        /* Experience & Education Styles */
+        .timeline-item {
+            margin-bottom: 25px;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .timeline-item:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 3px solid var(--light);
+            box-shadow: 0 0 0 2px var(--primary);
+            z-index: 2;
+        }
+        
+        .timeline-item:after {
+            content: "";
+            position: absolute;
+            left: 6px;
+            top: 22px;
+            width: 2px;
+            height: calc(100% + 10px);
+            background: var(--primary);
+            opacity: 0.3;
+        }
+        
+        .timeline-item:last-child:after {
+            display: none;
+        }
+        
+        .timeline-period {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .timeline-title {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .timeline-subtitle {
+            color: var(--primary);
+            font-style: italic;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .timeline-subtitle i {
+            color: var(--accent);
+        }
+        
+        /* Skills Styles */
+        .skills-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .skill-item {
+            margin-bottom: 18px;
+        }
+        
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+        
+        .skill-bar {
+            height: 10px;
+            background: var(--light-gray);
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 5px;
+        }
+        
+        /* Projects Styles */
+        .project {
+            margin-bottom: 22px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .project:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .project-title {
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.15rem;
+            color: var(--dark);
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 12px 0;
+        }
+        
+        .tech-tag {
+            background: var(--primary);
+            color: white;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+        
+        .tech-tag:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+            background: var(--secondary);
+        }
+        
+        /* Certificates Styles */
+        .certificates-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+        
+        .certificate-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 18px;
+            background: #f8fafc;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .certificate-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+        
+        .certificate-icon {
+            font-size: 26px;
+            color: var(--primary);
+            min-width: 36px;
+            text-align: center;
+            padding-top: 3px;
+        }
+        
+        .certificate-content {
+            flex: 1;
+        }
+        
+        .certificate-title {
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--dark);
+            font-size: 1.1rem;
+        }
+        
+        .certificate-org {
+            font-size: 0.95rem;
+            color: var(--gray);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .certificate-date {
+            font-size: 0.9rem;
+            color: var(--accent);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        /* Languages Styles */
+        .language-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px dashed var(--light-gray);
+        }
+        
+        .language-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .language-name {
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+        
+        .language-level {
+            font-size: 0.95rem;
+            color: var(--gray);
+            background: var(--light);
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+        
+        /* Footer Styles */
+        .footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 25px;
+            font-size: 0.95rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .social-link {
+            color: white;
+            font-size: 1.4rem;
+            transition: transform 0.3s, color 0.3s;
+        }
+        
+        .social-link:hover {
+            color: var(--accent);
+            transform: translateY(-5px);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                padding: 25px;
+            }
+            
+            .header {
+                padding: 40px 25px 30px;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+            }
+            
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .name {
+                font-size: 2.3rem;
+            }
+            
+            .title {
+                font-size: 1.3rem;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .section {
+            animation: fadeIn 0.6s ease-out forwards;
+            opacity: 0;
+        }
+        
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <div class="cv-container">
+        <!-- Header Section -->
+        <div class="header">
+            <h1 class="name">Luis Campos Granados</h1>
+            <h2 class="title">Desarrollador Full Stack</h2>
+            
+            <div class="profile-summary">
+                Desarrollador de software con habilidades de comunicación y trabajo en equipo. 
+                Reconocido por rápida adaptación y aprendizaje en entornos colaborativos. 
+                Responsable, proactivo y con sólida experiencia en análisis, diseño e implementación de sistemas.
+            </div>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>lcampos083@outlook.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+506 7223 4135</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Siquirres, Limón</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-linkedin-in"></i>
+                    <span>linkedin.com/in/Luis-Campos-Granados/</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Left Column -->
+            <div class="column">
+                <!-- Experience -->
+                <div class="section">
+                    <h3 class="section-title"><i class="fas fa-briefcase"></i> Experiencia Laboral</h3>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-period"><i class="far fa-calendar-alt"></i> Julio 2019 - Presente</div>
+                        <h4 class="timeline-title">Encargado de Informática</h4>
+                        <div class="timeline-subtitle"><i class="fas fa-building"></i> Fructa CR, Siquirres</div>
+                        <p>Administración de infraestructura TI (Windows Server, Hyper-V), 
+                            gestión de bases de datos SQL Server, desarrollo de reportes con SSRS y Crystal Reports, 
+                            soporte técnico a usuarios, control de seguridad con Sophos, 
+                            desarrollo de software y gestión del presupuesto anual de TI.
+                        </p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-period"><i class="far fa-calendar-alt"></i> Mayo 2018 - Abril 2019</div>
+                        <h4 class="timeline-title">Desarrollador Web</h4>
+                        <div class="timeline-subtitle"><i class="fas fa-building"></i> Euromobilia, Barrio Cuba</div>
+                        <p>Desarrollo y mantenimiento de plataforma web EuroSif, implementación de nuevas funcionalidades, soporte técnico y capacitación a usuarios finales.</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-period"><i class="far fa-calendar-alt"></i> Abril 2004 - Junio 2011</div>
+                        <h4 class="timeline-title">Asistente Administrativo</h4>
+                        <div class="timeline-subtitle"><i class="fas fa-building"></i> Restaurantes AS, Pérez Zeledón</div>
+                        <p>Gestión integral de almacén: control de inventarios, programación de pedidos, manejo de equipos de trabajo y servicio al cliente.</p>
+                    </div>
+                </div>
+                
+                <!-- Education -->
+                <div class="section">
+                    <h3 class="section-title"><i class="fas fa-graduation-cap"></i> Educación</h3>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-period"><i class="far fa-calendar-alt"></i> 2012 - 2017</div>
+                        <h4 class="timeline-title">Bachiller en Informática Empresarial</h4>
+                        <div class="timeline-subtitle"><i class="fas fa-university"></i> Universidad de costa rica</div>
+                        <p>Especializado en  analizar, diseñar y programar sistemas utilizando tecnología de punta.</p>
+                    </div>
+                </div>
+
+                <!-- Languages -->
+                <div class="section">
+                    <h3 class="section-title"><i class="fas fa-language"></i> Idiomas</h3>
+                    
+                    <div class="skills-container">
+                        <div class="language-item">
+                            <div class="language-name">Español</div>
+                            <div class="language-level">Nativo</div>
+                        </div>
+                        
+                        <div class="language-item">
+                            <div class="language-name">Inglés</div>
+                            <div class="language-level">Intermedio (B2)</div>
+                        </div>
+                        
+                        <div class="language-item">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Column -->
+            <div class="column">
+                <!-- Skills -->
+                <div class="section">
+                    <h3 class="section-title"><i class="fas fa-code"></i> Habilidades Técnicas</h3>
+                    
+                    <div class="skills-container">
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Asp.net</span>
+                                <span></span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>JavaScript</span>
+                                <span></span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>SQL</span>
+                                <span></span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Python</span>
+                                <span></span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 45%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Git</span>
+                                <span></span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 60%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Bootstrap</span>
+                                <span></span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Projects -->
+                <div class="section">
+                    <h3 class="section-title"><i class="fas fa-laptop-code"></i> Proyectos Destacados</h3>
+                    
+                    <div class="project">
+                        <h4 class="project-title"><i class="fas fa-star"></i> Interfaz para SAP  Business One</h4>
+                        <p>Interfaz que genera ordenes de compra automáticamente mediente DI API de SAP.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">C#</span>
+                            <span class="tech-tag">SQL Server</span>
+                            <span class="tech-tag">SAP DI API</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project">
+                        <h4 class="project-title"><i class="fas fa-star"></i> App web de escaneo</h4>
+                        <p>Aplicación web para capturar los datos de códigos de barras y marchamos de productos terminados mediante un hand help.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Asp.net C#</span>
+                            <span class="tech-tag">Sql Server</span>
+                            <span class="tech-tag">Javascript</span>
+                        </div>
+                    </div>
+                    
+                </div>                               
+                
+                <!-- Certificates Section -->
+                <div class="section">
+                    <h3 class="section-title"><i class="fas fa-certificate"></i> Certificados y Cursos</h3>
+                    
+                    <div class="certificates-container">
+                        <div class="certificate-item">
+                            <div class="certificate-icon">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <div class="certificate-content">
+                                <div class="certificate-title">English Journey Short Version</div>
+                                <div class="certificate-org">
+                                    <i class="fas fa-language"></i> Universidad Técnica Nacional.
+                                </div>
+                                <div class="certificate-date"><i class="far fa-calendar"></i> Marzo 2024</div>
+                            </div>
+                        </div>
+                        
+                        <div class="certificate-item">
+                            <div class="certificate-icon">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <div class="certificate-content">
+                                <div class="certificate-title">AngularJS: Desde hola mundo hasta una aplicación</div>
+                                <div class="certificate-org">
+                                    <i class="fab fa-node-js"></i> Udemy.<a href="https://www.udemy.com/certificate/UC-A5FJ0AIJ/">Ver certificado</a>
+                                </div>
+                                <div class="certificate-date"><i class="far fa-calendar"></i> Junio 2018</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p>Luis Campos Granados | 2025</p>
+            <div class="social-links">
+                <a href="www.linkedin.com/in/luis-campos-granados" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
